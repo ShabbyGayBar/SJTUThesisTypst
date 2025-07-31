@@ -2,7 +2,7 @@
 #import "@preview/theorion:0.3.3": *
 #import "../utils/theoriom.typ": *
 #import "@preview/equate:0.3.2": *
-#import "../utils/style.typ": ziti, zihao
+#import "../utils/style.typ": zihao, ziti
 #import "../utils/header.typ": main-text-page-header
 #import "../utils/heading.typ": main-text-first-heading, other-heading
 #import "../utils/figurex.typ": preset
@@ -33,20 +33,16 @@
   show: preset
 
   show heading: i-figured.reset-counters.with(extra-kinds: ("image", "image-en", "table", "table-en", "algorithm"))
-  show figure: i-figured.show-figure.with(
-    extra-prefixes: (image: "img:", algorithm: "algo:"),
-    numbering: if doctype == "bachelor" { "1-1" } else { "1.1" },
-  )
+  show figure: i-figured.show-figure.with(extra-prefixes: (image: "img:", algorithm: "algo:"), numbering: if doctype
+    == "bachelor" { "1-1" } else { "1.1" })
 
   // show math.equation: i-figured.show-equation.with(numbering: if doctype == "bachelor" { "(1-1)" } else { "(1.1)" })
 
-  set math.equation(
-    numbering: (..nums) => numbering(
-      if doctype == "bachelor" { "(1-1a)" } else { "(1.1a)" },
-      counter(heading).get().first(),
-      ..nums,
-    ),
-  )
+  set math.equation(numbering: (..nums) => numbering(
+    if doctype == "bachelor" { "(1-1a)" } else { "(1.1a)" },
+    counter(heading).get().first(),
+    ..nums,
+  ))
   show: equate.with(breakable: true, sub-numbering: false)
   let equation-label(
     heading,

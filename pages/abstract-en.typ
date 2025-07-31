@@ -1,4 +1,4 @@
-#import "../utils/style.typ": ziti, zihao
+#import "../utils/style.typ": zihao, ziti
 
 #let abstract-en-page(
   keywords: (),
@@ -17,8 +17,8 @@
 
   set par(
     first-line-indent: if doctype == "bachelor" { 2em } else { 1.5em },
-    leading: if doctype == "bachelor" { 11pt } else { 16pt },
-    spacing: if doctype == "bachelor" { 11pt } else { 16pt },
+    leading: if doctype == "bachelor" { 11pt } else { 12pt },
+    spacing: if doctype == "bachelor" { 11pt } else { 12pt },
   )
 
   body
@@ -26,15 +26,12 @@
   linebreak()
   linebreak()
 
-  [*Key words: *#(("",)+ keywords.intersperse(", ")).sum()]
+  [*Key words: *#(("",) + keywords.intersperse(", ")).sum()]
 
   set par(spacing: 16pt)
 
-  pagebreak(
-    weak: true,
-    to: if twoside {
-      "odd"
-    },
-  )
+  pagebreak(weak: true, to: if twoside {
+    "odd"
+  })
 }
 

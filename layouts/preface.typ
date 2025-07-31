@@ -1,4 +1,4 @@
-#import "../utils/style.typ": ziti, zihao
+#import "../utils/style.typ": zihao, ziti
 #import "../utils/header.typ": no-numbering-page-header
 #import "../utils/heading.typ": no-numbering-first-heading
 
@@ -7,14 +7,6 @@
   twoside: false,
   it,
 ) = {
-  set page(
-    margin: if doctype == "bachelor" {
-      (top: 3.75cm, bottom: 2.54cm, left: 3.17cm, right: 3.17cm)
-    } else {
-      (top: 3.5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm)
-    },
-  )
-
   show footnote.entry: set text(font: ziti.songti, size: zihao.xiaowu)
 
   show: no-numbering-page-header.with(
@@ -23,6 +15,7 @@
     bachelor-abs: if doctype == "bachelor" { true } else { false },
     bachelor-abs-en: if doctype == "bachelor" { true } else { false },
   )
+
   show: no-numbering-first-heading
 
   set page(header-ascent: 0.5cm)
@@ -46,15 +39,13 @@
 
   show table: set text(size: zihao.wuhao, weight: "regular")
   show table: set par(leading: 14pt)
-  set table(
-    stroke: (x, y) => {
-      if y == 0 {
-        none
-      } else {
-        none
-      }
-    },
-  )
+  set table(stroke: (x, y) => {
+    if y == 0 {
+      none
+    } else {
+      none
+    }
+  })
   show table: it => xubiao.update(false) + it
 
   set math.equation(supplement: [公式])

@@ -15,36 +15,32 @@
   fonts: (:),
   it,
 ) = {
-  set page(
-    margin: if doctype == "bachelor" {
-      if print {
-        (top: 2.54cm, bottom: 2.54cm, inside: 3.42cm, outside: 2.92cm)
-      } else {
-        (top: 2.54cm, bottom: 2.54cm, left: 3.17cm, right: 3.17cm)
-      }
+  set page(margin: if doctype == "bachelor" {
+    if print {
+      (top: 2.54cm, bottom: 2.54cm, inside: 3.42cm, outside: 2.92cm)
     } else {
-      if print {
-        (top: 3.5cm, bottom: 4cm, inside: 3cm, outside: 2.5cm)
-      } else {
-        (top: 3.5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm)
-      }
-    },
-  )
+      (top: 2.54cm, bottom: 2.54cm, left: 3.17cm, right: 3.17cm)
+    }
+  } else {
+    if print {
+      (top: 3.5cm, bottom: 4cm, inside: 3cm, outside: 2.5cm)
+    } else {
+      (top: 3.5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm)
+    }
+  })
 
   set text(hyphenate: false, font: ziti.songti)
   set text(lang: "zh", region: "cn")
   set par(leading: 20pt, first-line-indent: (amount: 2em, all: true))
-
   show: show-cn-fakebold
+
   show figure: set align(center)
   show table: set align(center)
-
   show figure.caption: set par(leading: 10pt, justify: false)
 
   set list(indent: 2em)
   set enum(indent: 2em)
   set terms(indent: 2em)
-
   show: align-list-marker-with-baseline
   show: align-enum-marker-with-baseline
 

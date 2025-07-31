@@ -14,23 +14,19 @@
   show: other-heading.with(appendix: true)
 
   show heading: i-figured.reset-counters.with(extra-kinds: ("image", "image-en", "table", "table-en", "algorithm"))
-  show figure: i-figured.show-figure.with(
-    extra-prefixes: (image: "img:", algorithm: "algo:"),
-    numbering: if doctype == "bachelor" { "A1-1" } else { "A.1" },
-  )
+  show figure: i-figured.show-figure.with(extra-prefixes: (image: "img:", algorithm: "algo:"), numbering: if doctype
+    == "bachelor" { "A-1" } else { "A.1" })
   set figure(outlined: false)
 
   // show math.equation: i-figured.show-equation.with(
   //   numbering: if doctype == "bachelor" { numbly("(A{1})", "(A{1}-{2})") } else { "(A.1)" },
   // )
 
-  set math.equation(
-    numbering: (..nums) => numbering(
-      if doctype == "bachelor" { "(A-1a)" } else { "(A.1a)" },
-      counter(heading).get().first(),
-      ..nums,
-    ),
-  )
+  set math.equation(numbering: (..nums) => numbering(
+    if doctype == "bachelor" { "(A-1a)" } else { "(A.1a)" },
+    counter(heading).get().first(),
+    ..nums,
+  ))
   show: equate.with(breakable: true, sub-numbering: false)
   let equation-label(
     heading,

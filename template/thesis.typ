@@ -25,7 +25,7 @@
   summary-en,
 ) = documentclass(
   doctype: "master", // 文档类型: "master" | "doctor" | "bachelor"
-  date: datetime(year: 2024, month: 11, day: 11), // 日期，如果需要显示今天的日期，可以使用 datetime.today() 函数
+  date: datetime.today(), // 日期
   twoside: false, // 双面模式
   print: false, // 打印模式, 设置为 true 时，根据奇偶页调整页边距
   anonymous: false, // 盲审模式
@@ -53,7 +53,10 @@
 #declare(
   confidentialty-level: "internal", // 保密级别: "public" | "internal" | "secret" | "confidential"
   confidentialty-year: 2, // 保密年份数，请根据保密级别的要求填写
-  // date: datetime.today(),
+  date: datetime.today(),
+  original-statement-sign: place(dx: 13cm, dy: -1.3cm, image("figures/student-sign.png", height: 2em)),
+  authorization-author-sign: place(dx: 5cm, dy: -1.3cm, image("figures/student-sign.png", height: 2em)),
+  supervisor-sign: place(dx: 4cm, dy: -1.2cm, image("figures/supervisor-sign.png", height: 2em)),
 )
 
 #show: preface
@@ -130,7 +133,7 @@
 - $qty("1.3+1.2-0.3e3", "erg/cm^2/s", space: "#h(2mm)")$
 - $numrange("1,1238e-2", "3,0868e5", thousandsep: "'")$
 - $numrange("10", "20", delimiter: "tilde")$
-- $qtyrange("1e3", "2e3", "meter per second squared", per: "/", delimiter: "\"to\"")$
+- $qtyrange("1e3", "2e3", "meter per second squared", per: "\\/", delimiter: "\"to\"")$
 - $qtyrange("10", "20", "celsius", delimiter: "tilde")$
 
 === 数学符号和公式
@@ -164,12 +167,12 @@ $
   )
 $
 
-公式较长时最好在等号“$=$”处转行。如果有某行公式不需要编号，请使用 `#<equate:revoke>` 标签。（此标签由 `equate` 包定义，目前不可自定义）
+公式较长时最好在等号“$=$”处转行。子公式的引用请在该行公式后添加 `#<subequation>` 引用标签，如@subequation 所示。如果有某行公式不需要编号，请使用 `#<equate:revoke>` 标签。（此标签由 `equate` 包定义，目前不可自定义）
 
 $
     & I(X_3; X_4) - I(X_3; X_4 | X_1) - I(X_3; X_4 | X_2) #<equate:revoke> \
-  = & [I(X_3; X_4) - I(X_3; X_4 | X_1)] - I(X_3; X_4 | tilde(X_2))         \
-  = & I(X_1; X_3; X_4) - I(X_3; X_4 | tilde(X_2)).
+  = & [I(X_3; X_4) - I(X_3; X_4 | X_1)] - I(X_3; X_4 | tilde(X_2)) \
+  = & I(X_1; X_3; X_4) - I(X_3; X_4 | tilde(X_2)). #<subequation>
 $
 
 如果在等号处转行难以实现，也可在 $+$、$-$、$times$、$div$ 运算符号处转行，转行时运算符号仅书写于转行式前，不重复书写。
@@ -501,7 +504,7 @@ def fibonacci(n: int) -> int:
 
 选择二维情况，有如下的偏振矢量：
 $
-  bf(E) & = E_z (r, theta) hat(bf(z)),                                       \
+  bf(E) & = E_z (r, theta) hat(bf(z)), \
   bf(H) & = H_r (r, theta) hat(bf(r)) + H_theta (r, theta) hat(bold(theta)).
 $
 

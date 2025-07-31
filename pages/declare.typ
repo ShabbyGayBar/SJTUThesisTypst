@@ -1,4 +1,4 @@
-#import "../utils/style.typ": ziti, zihao
+#import "../utils/style.typ": zihao, ziti
 #import "../utils/uline.typ": uline
 #import "../utils/checkbox.typ": checkbox
 
@@ -9,24 +9,24 @@
   confidentialty-level: "",
   confidentialty-year: 0,
   date: none,
+  original-statement-sign: none,
+  authorization-author-sign: none,
+  supervisor-sign: none,
   info: (:),
 ) = {
   if anonymous {
     return
   }
 
-  align(
-    center,
-    text(
-      font: ziti.heiti,
-      size: zihao.sanhao,
-      weight: "bold",
-    )[
-      上海交通大学
+  align(center, text(
+    font: ziti.heiti,
+    size: zihao.sanhao,
+    weight: "bold",
+  )[
+    上海交通大学
 
-      学位论文原创性声明
-    ],
-  )
+    学位论文原创性声明
+  ])
 
   set text(font: ziti.songti, size: zihao.xiaosi)
   set par(first-line-indent: 2em, leading: 16pt, spacing: 16pt)
@@ -42,33 +42,42 @@
   linebreak()
   linebreak()
 
-  align(
-    right,
-    text()[
-      学位论文作者签名：#h(6.6em)
+  align(right, text()[
+    学位论文作者签名：#h(6.6em)
+    #if original-statement-sign != none {
+      original-statement-sign
+    }
 
-      #if date == none [
-        日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
-      ] else [
-        日期：#h(-0.25em) #date.display("[year]年  [month]月  [day]日") #h(3.9em)
-      ]
-    ],
-  )
+    #if date == none [
+      日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
+    ] else [
+      日期：#box(grid(
+        align: center,
+        columns: (1.9em, 1.8em, 1.1em, 1.5em, 1.5em, 1em, 3.9em),
+        column-gutter: 0em,
+        inset: 0em,
+        [#date.display("[year]")],
+        [年],
+        [#date.display("[month padding:none]")],
+        [月],
+        [#date.display("[day padding:none]")],
+        [日],
+        [],
+      ))
+    ]
+  ])
 
-  v(3em)
+  block(height: 1fr)
 
-  align(
-    center,
-    text(
-      font: ziti.heiti,
-      size: zihao.sanhao,
-      weight: "bold",
-    )[
-      上海交通大学
+  align(center, text(
+    font: ziti.heiti,
+    size: zihao.sanhao,
+    weight: "bold",
+  )[
+    上海交通大学
 
-      学位论文使用授权书
-    ],
-  )
+    学位论文使用授权书
+  ])
 
   v(1em)
 
@@ -166,45 +175,64 @@
   }
 
   linebreak()
-
   h(8em)
   [（请在以上方框内选择打“$checkmark$”）]
-
   linebreak()
   linebreak()
 
   columns(2)[
-    #align(
-      right,
-      text()[
-        学位论文作者签名：#h(6.6em)
+    #align(right, text()[
+      学位论文作者签名：#h(6.6em)
+      #if authorization-author-sign != none {
+        authorization-author-sign
+      }
 
-        #if date == none [
-          日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
-        ] else [
-          日期：#h(-0.25em) #date.display("[year]年  [month]月  [day]日") #h(3.9em)
-        ]
-      ],
-    )
+      #if date == none [
+        日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
+      ] else [
+        日期：#box(grid(
+          align: center,
+          columns: (1.9em, 1.8em, 1.1em, 1.5em, 1.5em, 1em, 3.9em),
+          column-gutter: 0em,
+          inset: 0em,
+          [#date.display("[year]")],
+          [年],
+          [#date.display("[month padding:none]")],
+          [月],
+          [#date.display("[day padding:none]")],
+          [日],
+          [],
+        ))
+      ]
+    ])
     #colbreak()
-    #align(
-      right,
-      text()[
-        指导教师签名：#h(8.6em)
+    #align(right, text()[
+      指导教师签名：#h(8.6em)
+      #if supervisor-sign != none {
+        supervisor-sign
+      }
 
-        #if date == none [
-          日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
-        ] else [
-          日期：#h(-0.25em) #date.display("[year]年  [month]月  [day]日") #h(3.9em)
-        ]
-      ],
-    )
+      #if date == none [
+        日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
+      ] else [
+        日期：#box(grid(
+          align: center,
+          columns: (1.9em, 1.8em, 1.1em, 1.5em, 1.5em, 1em, 3.9em),
+          column-gutter: 0em,
+          inset: 0em,
+          [#date.display("[year]")],
+          [年],
+          [#date.display("[month padding:none]")],
+          [月],
+          [#date.display("[day padding:none]")],
+          [日],
+          [],
+        ))
+      ]
+    ])
   ]
 
-  pagebreak(
-    weak: true,
-    to: if twoside {
-      "odd"
-    },
-  )
+  pagebreak(weak: true, to: if twoside {
+    "odd"
+  })
 }
