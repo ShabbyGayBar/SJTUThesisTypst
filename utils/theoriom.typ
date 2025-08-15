@@ -1,4 +1,4 @@
-#import "@preview/theorion:0.3.3": *
+#import "@preview/theorion:0.4.0": *
 #import "style.typ": zihao
 
 /// A simple render function
@@ -26,42 +26,42 @@
 #let (lemma-counter, lemma-box, lemma, show-lemma) = make-frame(
   "lemma",
   theorion-i18n-map.at("lemma"),
-  counter: theorem-counter,
+  inherited-levels: 1,
   render: render-fn,
 )
 
 #let (corollary-counter, corollary-box, corollary, show-corollary) = make-frame(
   "corollary",
   theorion-i18n-map.at("corollary"),
-  inherited-from: theorem-counter,
+  inherited-levels: 1,
   render: render-fn,
 )
 
 #let (axiom-counter, axiom-box, axiom, show-axiom) = make-frame(
   "axiom",
   theorion-i18n-map.at("axiom"),
-  counter: theorem-counter,
+  inherited-levels: 1,
   render: render-fn,
 )
 
 #let (postulate-counter, postulate-box, postulate, show-postulate) = make-frame(
   "postulate",
   theorion-i18n-map.at("postulate"),
-  counter: theorem-counter,
+  inherited-levels: 1,
   render: render-fn,
 )
 
 #let (definition-counter, definition-box, definition, show-definition) = make-frame(
   "definition",
   theorion-i18n-map.at("definition"),
-  counter: theorem-counter,
+  inherited-levels: 1,
   render: render-fn,
 )
 
 #let (proposition-counter, proposition-box, proposition, show-proposition) = make-frame(
   "proposition",
   theorion-i18n-map.at("proposition"),
-  counter: theorem-counter,
+  inherited-levels: 1,
   render: render-fn,
 )
 

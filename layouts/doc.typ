@@ -2,6 +2,7 @@
 #import "../utils/list-enum-align.typ": *
 #import "@preview/cuti:0.3.0": show-cn-fakebold
 #import "@preview/i-figured:0.2.4"
+#import "@preview/itemize:0.1.2" as el
 
 // 文稿设置，可以进行一些像页面边距这类的全局设置
 #let doc(
@@ -38,11 +39,9 @@
   show table: set align(center)
   show figure.caption: set par(leading: 10pt, justify: false)
 
-  set list(indent: 2em)
-  set enum(indent: 2em)
-  set terms(indent: 2em)
-  show: align-list-marker-with-baseline
-  show: align-enum-marker-with-baseline
+  set list(indent: 1em, body-indent: 0.65em)
+  set enum(indent: 0.83em, body-indent: 0.45em)
+  show: el.default-enum-list
 
   set document(
     title: info.title,
