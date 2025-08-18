@@ -1,5 +1,4 @@
 #import "../utils/style.typ": ziti
-#import "../utils/list-enum-align.typ": *
 #import "@preview/cuti:0.3.0": show-cn-fakebold
 #import "@preview/i-figured:0.2.4"
 #import "@preview/itemize:0.1.2" as el
