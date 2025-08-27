@@ -1,4 +1,4 @@
-#import "../utils/style.typ": ziti, zihao
+#import "../utils/style.typ": zihao, ziti
 #import "../utils/header.typ": no-numbering-page-header
 #import "../utils/heading.typ": no-numbering-first-heading
 

@@ -1,4 +1,4 @@
-#import "utils/style.typ": ziti, zihao
+#import "utils/style.typ": zihao, ziti
 #import "utils/word-counter.typ": *
 #import "utils/figurex.typ": *
 #import "layouts/doc.typ": doc
@@ -11,7 +11,8 @@
 #import "pages/declare.typ": declare-page
 #import "pages/abstract.typ": abstract-page
 #import "pages/abstract-en.typ": abstract-en-page
-#import "pages/outline.typ": outline-page, image-outline-page, table-outline-page, algorithm-outline-page
+#import "pages/outline.typ": algorithm-outline-page, image-outline-page, outline-page, table-outline-page
+#import "pages/nomenclature.typ": nomenclature-page
 #import "pages/bib.typ": bibliography-page
 #import "pages/acknowledgement.typ": acknowledgement-page
 #import "pages/achievement.typ": achievement-page
@@ -156,6 +157,12 @@
     },
     algorithm-outline: (..args) => {
       algorithm-outline-page(
+        ..args,
+        twoside: twoside,
+      )
+    },
+    nomenclature: (..args) => {
+      nomenclature-page(
         ..args,
         twoside: twoside,
       )

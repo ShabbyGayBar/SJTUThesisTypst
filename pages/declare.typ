@@ -1,5 +1,5 @@
 #import "../utils/style.typ": zihao, ziti
-#import "../utils/uline.typ": uline
+#import "../utils/uline.typ": center-box, uline
 #import "../utils/checkbox.typ": checkbox
 
 #let declare-page(
@@ -49,21 +49,9 @@
     }
 
     #if date == none [
-      日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
+      日期：#center-box(2.5em)[] 年 #center-box(1.25em)[] 月 #center-box(1.25em)[] 日 #h(3.4em)
     ] else [
-      日期：#box(grid(
-        align: center,
-        columns: (1.9em, 1.8em, 1.1em, 1.5em, 1.5em, 1em, 3.9em),
-        column-gutter: 0em,
-        inset: 0em,
-        [#date.display("[year]")],
-        [年],
-        [#date.display("[month padding:none]")],
-        [月],
-        [#date.display("[day padding:none]")],
-        [日],
-        [],
-      ))
+      日期：#center-box(2.5em)[#date.display("[year]")] 年 #center-box(1.25em)[#date.display("[month padding:none]")] 月 #center-box(1.25em)[#date.display("[day padding:none]")] 日 #h(3.4em)
     ]
   ])
 
@@ -144,7 +132,7 @@
 
       $square$ *内部论文*，保密 $square$ 1年/ $square$ 2年/ $square$ 3年，过保密期后适用本授权书。
 
-      #checkbox *秘密论文*，保密#uline(2.5em)[#h(1em)#confidentialty-year]年（不超过10年），过保密期后适用本授权书。
+      #checkbox *秘密论文*，保密#uline(2.5em)[#confidentialty-year]年（不超过10年），过保密期后适用本授权书。
 
       $square$ *机密论文*，保密#uline(2.5em)[]年（不超过20年），过保密期后适用本授权书。
     ]
@@ -158,7 +146,7 @@
 
       $square$ *秘密论文*，保密#uline(2.5em)[]年（不超过10年），过保密期后适用本授权书。
 
-      #checkbox *机密论文*，保密#uline(2.5em)[#h(0.7em)#confidentialty-year]年（不超过20年），过保密期后适用本授权书。
+      #checkbox *机密论文*，保密#uline(2.5em)[#confidentialty-year]年（不超过20年），过保密期后适用本授权书。
     ]
   } else {
     [
@@ -188,21 +176,9 @@
       }
 
       #if date == none [
-        日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
+        日期：#center-box(2.5em)[] 年 #center-box(1.25em)[] 月 #center-box(1.25em)[] 日 #h(3.4em)
       ] else [
-        日期：#box(grid(
-          align: center,
-          columns: (1.9em, 1.8em, 1.1em, 1.5em, 1.5em, 1em, 3.9em),
-          column-gutter: 0em,
-          inset: 0em,
-          [#date.display("[year]")],
-          [年],
-          [#date.display("[month padding:none]")],
-          [月],
-          [#date.display("[day padding:none]")],
-          [日],
-          [],
-        ))
+        日期：#center-box(2.5em)[#date.display("[year]")] 年 #center-box(1.25em)[#date.display("[month padding:none]")] 月 #center-box(1.25em)[#date.display("[day padding:none]")] 日 #h(3.4em)
       ]
     ])
     #colbreak()
@@ -213,21 +189,9 @@
       }
 
       #if date == none [
-        日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
+        日期：#center-box(2.5em)[] 年 #center-box(1.25em)[] 月 #center-box(1.25em)[] 日 #h(3.4em)
       ] else [
-        日期：#box(grid(
-          align: center,
-          columns: (1.9em, 1.8em, 1.1em, 1.5em, 1.5em, 1em, 3.9em),
-          column-gutter: 0em,
-          inset: 0em,
-          [#date.display("[year]")],
-          [年],
-          [#date.display("[month padding:none]")],
-          [月],
-          [#date.display("[day padding:none]")],
-          [日],
-          [],
-        ))
+        日期：#center-box(2.5em)[#date.display("[year]")] 年 #center-box(1.25em)[#date.display("[month padding:none]")] 月 #center-box(1.25em)[#date.display("[day padding:none]")] 日 #h(3.4em)
       ]
     ])
   ]

@@ -9,7 +9,7 @@
  */
 
 #import "@preview/i-figured:0.2.4"
-#import "style.typ": ziti, zihao
+#import "style.typ": zihao, ziti
 #let preset(
   body,
 ) = {
@@ -53,6 +53,7 @@
 ) = context {
   set figure.caption(position: top)
   show table: set text(size: zihao.wuhao, weight: "regular")
+  show table: set par(leading: 1em)
   set table(stroke: none)
   let prefix = "tablex-none-label"
   let number = query(figure.where(kind: "table").before(here()))
@@ -116,6 +117,7 @@
 #let algox(
   content,
   caption: none,
+  caption-en: none,
   label-name: "",
   breakable: true,
 ) = context {
@@ -158,6 +160,16 @@
                   caption: caption,
                   supplement: [算法],
                 )#new-label
+                #if caption-en != none {
+                  v(-0.2em)
+                  figure(
+                    [],
+                    kind: "algorithm-en",
+                    caption: caption-en,
+                    supplement: [Algorithm],
+                  )
+                  v(-0.2em)
+                }
                 #v(0.5em)
               ]
               nxt.update(true)

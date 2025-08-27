@@ -1,9 +1,6 @@
-#let distr(s, w: auto) = {
+#let distr(width: auto, body) = {
   block(
-    width: w,
-    stack(
-      dir: ltr,
-      ..s.clusters().map(x => [#x]).intersperse(1fr),
-    ),
+    width: width,
+    body + linebreak(justify: true),
   )
 }

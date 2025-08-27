@@ -19,6 +19,7 @@
   image-outline,
   table-outline,
   algorithm-outline,
+  nomenclature,
   bib,
   acknowledgement,
   achievement,
@@ -54,10 +55,10 @@
   confidentialty-level: "internal", // 保密级别: "public" | "internal" | "secret" | "confidential"
   confidentialty-year: 2, // 保密年份数，请根据保密级别的要求填写
   date: datetime.today(),
-  original-statement-sign: place(dx: 13cm, dy: -1.3cm, image("figures/student-sign.png", height: 2em)),
+  original-statement-sign: place(dx: 13cm, dy: -1.3cm, image("figures/student-sign.png", height: 2em)), // 请根据签名图片的大小，自行调整图片的高度和位置
   authorization-author-sign: place(dx: 5cm, dy: -1.3cm, image("figures/student-sign.png", height: 2em)),
   supervisor-sign: place(dx: 4cm, dy: -1.2cm, image("figures/supervisor-sign.png", height: 2em)),
-)
+) // 不需要显示日期和签名，可直接注释
 
 #show: preface
 
@@ -86,7 +87,20 @@
 
 #algorithm-outline() // 算法目录，按需设置
 
+#nomenclature(
+  width: 50%,
+  columns: (1fr, 1.5fr),
+)[
+  / $epsilon$: 介电常数
+  / $mu$: 磁导率
+  / $epsilon$: 介电常数
+  / $mu$: 磁导率
+  / $epsilon$: 介电常数
+  / $mu$: 磁导率
+]
+
 #show: mainmatter
+// #show: mainmatter.with(enable-avoid-orphan-headings: true) // 避免孤行标题，此为实验性功能，不保证稳定
 #show: word-count-cjk // 正文字数统计
 
 = 绪论
@@ -221,6 +235,8 @@ $
 按照教务处的要求，参考文献外观应符合国标 GB/T 7714 的要求。
 
 正文中引用参考文献时，使用 `@Yu2001 @Cheng1999 @Li1999` 可以产生“上标引用的参考文献”，如 @Yu2001 @Cheng1999 @Li1999。
+
+Typst 使用 Hayagriva 管理参考文献，有部分细节问题还在逐步修复。
 
 = 图表、算法格式
 
@@ -437,27 +453,31 @@ $
 我们可以通过@algo:fibonacci 来计算斐波那契数列第 $n$ 项。
 
 #let tmp = math.italic("tmp")
-#algox(label-name: "fibonacci", caption: [斐波那契数列计算], pseudocode-list(line-gap: 1em, indentation: 2em)[
-  - #h(-1.5em) *input:* integer $n$
-  - #h(-1.5em) *output:* Fibonacci number $F(n)$
-  + *if* $n = 0$ *then return* $0$
-  + *if* $n = 1$ *then return* $1$
-  + $a <- 0$
-  + $b <- 1$
-  + *for* $i$ *from* $2$ *to* $n$ *do*
-    + $tmp <- a + b$
-    + $a <- b$
-    + $b <- tmp$
-  + *end*
-  + *return* $b$
-])
+#algox(
+  label-name: "fibonacci",
+  caption: [斐波那契数列计算],
+  pseudocode-list(line-gap: 1em, indentation: 2em)[
+    - #h(-1.5em) *input:* integer $n$
+    - #h(-1.5em) *output:* Fibonacci number $F(n)$
+    + *if* $n = 0$ *then return* $0$
+    + *if* $n = 1$ *then return* $1$
+    + $a <- 0$
+    + $b <- 1$
+    + *for* $i$ *from* $2$ *to* $n$ *do*
+      + $tmp <- a + b$
+      + $a <- b$
+      + $b <- tmp$
+    + *end*
+    + *return* $b$
+  ],
+)
 
 == 代码环境
 
 我们可以在论文中插入算法，但是不建议插入大段的代码。如果确实需要插入代码，推荐使用 `codly` 包插入代码。
 
 #import "@preview/codly:1.3.0": *
-#import "@preview/codly-languages:0.1.1": *
+#import "@preview/codly-languages:0.1.8": *
 #show: codly-init.with()
 #codly(languages: codly-languages)
 
@@ -510,32 +530,32 @@ $
 
 对上式求旋度：
 $
-  nabla times bf(E) & = 1 / r (diff E_z) / (diff theta) hat(bf(r)) - (diff E_z) / (diff r) hat(bold(theta)), \
-  nabla times bf(H) & = [1 / r diff / (diff r) (r H_theta) - 1 / r (diff H_r) / (diff theta)] hat(bf(z)).
+  nabla times bf(E) & = 1 / r (partial E_z) / (partial theta) hat(bf(r)) - (partial E_z) / (partial r) hat(bold(theta)), \
+  nabla times bf(H) & = [1 / r partial / (partial r) (r H_theta) - 1 / r (partial H_r) / (partial theta)] hat(bf(z)).
 $
 
 因为在柱坐标系下，$macron(macron(mu))$ 是对角的，所以 Maxwell 方程组中电场 $bf(E)$ 的旋度：
 $
   & nabla times bf(E) = upright(i) omega bf(B), \
-  & 1 / r (diff E_z) / (diff theta) hat(bf(r)) - (diff E_z) / (diff r) hat(bold(theta)) = upright(i) omega mu_r H_r hat(bf(r)) + upright(i) omega mu_theta H_theta hat(bold(theta)).
+  & 1 / r (partial E_z) / (partial theta) hat(bf(r)) - (partial E_z) / (partial r) hat(bold(theta)) = upright(i) omega mu_r H_r hat(bf(r)) + upright(i) omega mu_theta H_theta hat(bold(theta)).
 $
 
 所以 $bf(H)$ 的各个分量可以写为：
 $
-      H_r & = 1 / (ii omega mu_r) 1 / r (diff E_z) / (diff theta), \
-  H_theta & = 1 / (ii omega mu_theta) 1 / r (diff E_z) / (diff r).
+      H_r & = 1 / (ii omega mu_r) 1 / r (partial E_z) / (partial theta), \
+  H_theta & = 1 / (ii omega mu_theta) 1 / r (partial E_z) / (partial r).
 $
 
 同样地，在柱坐标系下，$macron(macron(epsilon.alt))$ 是对角的，所以 Maxwell 方程组中磁场 $bf(H)$ 的旋度：
 $
   & nabla times bf(H) = -ii omega bf(D), \
-  & [1 / r diff / (diff r) (r H_theta) - 1 / r (diff H_r) / (diff theta)] hat(bf(z)) = -ii omega macron(macron(epsilon.alt)) bf(E) = -ii omega epsilon.alt_z E_z hat(bf(z)), \
-  & 1 / r diff / (diff r)(r H_theta) - 1 / r (diff H_r) / (diff theta) = -ii omega epsilon.alt_z E_z.
+  & [1 / r partial / (partial r) (r H_theta) - 1 / r (partial H_r) / (partial theta)] hat(bf(z)) = -ii omega macron(macron(epsilon.alt)) bf(E) = -ii omega epsilon.alt_z E_z hat(bf(z)), \
+  & 1 / r partial / (partial r)(r H_theta) - 1 / r (partial H_r) / (partial theta) = -ii omega epsilon.alt_z E_z.
 $
 
 由此我们可以得到关于 $E_z$ 的波函数方程：
 $
-  1 / (mu_theta epsilon.alt_z) 1 / r diff / (diff r) (r (diff E_z) / (diff r)) + 1 / (mu_r epsilon.alt_z) 1 / r^2 (diff^2 E_z) / (diff theta^2) + omega^2 E_z = 0.
+  1 / (mu_theta epsilon.alt_z) 1 / r partial / (partial r) (r (partial E_z) / (partial r)) + 1 / (mu_r epsilon.alt_z) 1 / r^2 (partial^2 E_z) / (partial theta^2) + omega^2 E_z = 0.
 $
 
 = 绘图
@@ -589,10 +609,10 @@ $
 
 `lilaq` 是一个强大的 Typst 绘图库，可以绘制各种类型的数据图。
 
-#import "@preview/lilaq:0.3.0" as lq
+#import "@preview/lilaq:0.4.0" as lq
 
 #let xs = (0, 1, 2, 3, 4)
-#let (y1, y2) = lq.load-txt(read("data.csv"))
+#let (y1, y2) = ((1, 2, 3, 4, 5), (5, 3, 7, 9, 3))
 
 #imagex(
   lq.diagram(

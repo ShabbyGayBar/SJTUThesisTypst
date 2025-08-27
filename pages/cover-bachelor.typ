@@ -1,4 +1,4 @@
-#import "../utils/style.typ": ziti, zihao
+#import "../utils/style.typ": zihao, ziti
 #import "../utils/distr.typ": distr
 #import "../utils/datetime-display.typ": datetime-display-without-day
 
@@ -36,7 +36,7 @@
 
   v(1fr)
 
-  let info-key(zh) = (distr(zh, w: 4em))
+  let info-key(zh) = distr(width: 5em, zh)
 
   let info-value(zh) = (
     text(
@@ -62,21 +62,21 @@
     row-gutter: 0.81em,
     [#info-key("姓名")],
     [#text(weight: "bold")[：]],
-    [#if anonymous { } else {
-        info-value(info.name)
-      }],
+    [#if anonymous {} else {
+      info-value(info.name)
+    }],
 
     [#info-key("学号")],
     [#text(weight: "bold")[：]],
-    [#if anonymous { } else {
-        info-value(info.student_id)
-      }],
+    [#if anonymous {} else {
+      info-value(info.student_id)
+    }],
 
     [#info-key("导师")],
     [#text(weight: "bold")[：]],
-    [#if anonymous { } else {
-        info-value(info.supervisor)
-      }],
+    [#if anonymous {} else {
+      info-value(info.supervisor)
+    }],
 
     [#info-key("学院")], [#text(weight: "bold")[：]], [#info-value(info.school)],
     [#info-key("专业名称")], [#text(weight: "bold")[：]], [#info-value(info.major)],

@@ -1,5 +1,5 @@
 #import "@preview/i-figured:0.2.4"
-#import "@preview/theorion:0.3.3": *
+#import "@preview/theorion:0.4.0": *
 #import "../utils/theoriom.typ": *
 #import "@preview/equate:0.3.2": *
 #import "../utils/style.typ": zihao, ziti
@@ -10,7 +10,7 @@
 #let mainmatter(
   doctype: "master",
   twoside: false,
-  enable-auto-section-pagebreak: false,
+  enable-avoid-orphan-headings: false,
   auto-section-pagebreak-space: 15%,
   body,
 ) = {
@@ -26,13 +26,20 @@
     twoside: twoside,
   )
   show: other-heading.with(
-    enable-auto-section-pagebreak: enable-auto-section-pagebreak,
+    enable-avoid-orphan-headings: enable-avoid-orphan-headings,
     auto-section-pagebreak-space: auto-section-pagebreak-space,
   )
 
   show: preset
 
-  show heading: i-figured.reset-counters.with(extra-kinds: ("image", "image-en", "table", "table-en", "algorithm"))
+  show heading: i-figured.reset-counters.with(extra-kinds: (
+    "image",
+    "image-en",
+    "table",
+    "table-en",
+    "algorithm",
+    "algorithm-en",
+  ))
   show figure: i-figured.show-figure.with(extra-prefixes: (image: "img:", algorithm: "algo:"), numbering: if doctype
     == "bachelor" { "1-1" } else { "1.1" })
 

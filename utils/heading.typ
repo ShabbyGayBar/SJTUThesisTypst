@@ -1,4 +1,4 @@
-#import "style.typ": ziti, zihao
+#import "style.typ": zihao, ziti
 #import "@preview/numbly:0.1.0": numbly
 
 #let no-numbering-first-heading(body) = {
@@ -126,7 +126,7 @@
 }
 
 #let other-heading(
-  enable-auto-section-pagebreak: false,
+  enable-avoid-orphan-headings: false,
   auto-section-pagebreak-space: 15%,
   appendix: false,
   body,
@@ -148,7 +148,7 @@
       leading: 18pt,
     )
 
-    if enable-auto-section-pagebreak {
+    if enable-avoid-orphan-headings {
       let threshold = auto-section-pagebreak-space
       block(breakable: false, height: threshold)
       v(-threshold, weak: true)
@@ -159,7 +159,6 @@
     counter(heading).display() + h(1em) + it.body
     v(6pt)
   }
-
 
   // 设置三级标题
   show heading.where(level: 3): it => {
@@ -175,7 +174,7 @@
       leading: 16pt,
     )
 
-    if enable-auto-section-pagebreak {
+    if enable-avoid-orphan-headings {
       let threshold = auto-section-pagebreak-space
       block(breakable: false, height: threshold)
       v(-threshold, weak: true)
@@ -200,7 +199,7 @@
       leading: 16pt,
     )
 
-    if enable-auto-section-pagebreak {
+    if enable-avoid-orphan-headings {
       let threshold = auto-section-pagebreak-space
       block(breakable: false, height: threshold)
       v(-threshold, weak: true)
@@ -211,5 +210,6 @@
     counter(heading).display() + h(1em) + it.body
     v(6pt)
   }
+
   body
 }
