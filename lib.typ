@@ -66,6 +66,7 @@
         ..args,
         doctype: doctype,
         twoside: twoside,
+        print: print,
       )
     },
     mainmatter: (..args) => {

@@ -25,7 +25,7 @@
   achievement,
   summary-en,
 ) = documentclass(
-  doctype: "master", // 文档类型: "master" | "doctor" | "bachelor"
+  doctype: "bachelor", // 文档类型: "master" | "doctor" | "bachelor"
   date: datetime.today(), // 日期
   twoside: false, // 双面模式
   print: false, // 打印模式, 设置为 true 时，根据奇偶页调整页边距
@@ -100,10 +100,10 @@
 ]
 
 #show: mainmatter
-// #show: mainmatter.with(enable-avoid-orphan-headings: true) // 避免孤行标题，此为实验性功能，不保证稳定
+// #show: mainmatter.with(enable-avoid-orphan-headings: true) // 避免孤行标题，此为实验性功能，会对页面顶部距离造成影响
 #show: word-count-cjk // 正文字数统计
 
-= 绪论
+= 绪论 <chp:intro>
 
 == 引言
 
@@ -115,13 +115,13 @@
 
 ==== 四级标题
 
-......
+标题引用：@chp:intro @sec:meaning @app:flowchart
 
 == 本文研究主要内容
 
 本文......
 
-== 本文研究意义
+== 本文研究意义 <sec:meaning>
 
 本文......
 
@@ -560,7 +560,7 @@ $
 
 = 绘图
 
-== 流程图
+== 流程图 <app:flowchart>
 
 `fletcher` 是一个基于 `CeTZ` 的 `Typst` 包，用于绘制流程图，功能丰富，可参考 `fletcher` 的文档进行学习。
 
@@ -631,7 +631,7 @@ $
   label-name: "lilaq-line-example",
 )
 
-#import "@preview/suiji:0.3.0"
+#import "@preview/suiji:0.4.0"
 #let rng = suiji.gen-rng(33)
 #let (rng, x) = suiji.uniform(rng, size: 20)
 #let (rng, y) = suiji.uniform(rng, size: 20)

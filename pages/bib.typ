@@ -27,7 +27,7 @@
 
   bilingual-bibliography(
     bibliography: bibfunc,
-    title: if doctype == "bachelor" { "参  考  文  献" } else { "参考文献" },
+    title: if doctype == "bachelor" { [参#h(0.5em)考#h(0.5em)文#h(0.5em)献] } else { [参考文献] },
     full: full,
   )
 

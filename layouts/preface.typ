@@ -5,8 +5,23 @@
 #let preface(
   doctype: "master",
   twoside: false,
+  print: false,
   it,
 ) = {
+  set page(margin: if doctype == "bachelor" {
+    if print {
+      (top: 3.65cm, bottom: 3cm, inside: 3.42cm, outside: 2.92cm)
+    } else {
+      (top: 3.65cm, bottom: 3cm, left: 3.17cm, right: 3.17cm)
+    }
+  } else {
+    if print {
+      (top: 3.5cm, bottom: 4cm, inside: 3cm, outside: 2.5cm)
+    } else {
+      (top: 3.5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm)
+    }
+  })
+
   show footnote.entry: set text(font: ziti.songti, size: zihao.xiaowu)
 
   show: no-numbering-page-header.with(

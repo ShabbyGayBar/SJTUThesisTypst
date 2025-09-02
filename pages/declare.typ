@@ -55,7 +55,7 @@
     ]
   ])
 
-  block(height: 1fr)
+  v(2fr)
 
   align(center, text(
     font: ziti.heiti,
@@ -195,6 +195,8 @@
       ]
     ])
   ]
+
+  v(1fr)
 
   pagebreak(weak: true, to: if twoside {
     "odd"

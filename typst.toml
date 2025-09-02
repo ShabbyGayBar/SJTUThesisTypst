@@ -8,7 +8,7 @@ description = "上海交通大学学位论文 Typst 模板。Shanghai Jiao Tong 
 repository = "https://github.com/tzhtaylor/modern-sjtu-thesis"
 keywords = ["Shanghai Jiao Tong University", "thesis"]
 categories = ["thesis"]
-exclude = ["imgs"]
+exclude = []
 
 [template]
 path = "template"

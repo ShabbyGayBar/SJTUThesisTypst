@@ -93,6 +93,8 @@
             equation-label(heading-index, equation-index)
           },
       )
+    } else if f == heading and it.element.level > 1 and it.element.supplement != [附录] {
+      link(it.target, [第] + it + [节])
     } else {
       it
     }

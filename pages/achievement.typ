@@ -36,11 +36,9 @@
   }
   show list: set text(font: ziti.heiti, weight: "bold")
 
-  heading(level: 1)[
-    #if doctype == "bachelor" {
-      "攻读学位期间学术论文和科研成果目录"
-    } else { "学术论文和科研成果目录" }
-  ]
+  heading(level: 1)[#if doctype == "bachelor" { [攻读学位期间学术论文和科研成果目录] } else {
+    [学术论文和科研成果目录]
+  }]
 
   if doctype == "bachelor" {
     for paper in papers {

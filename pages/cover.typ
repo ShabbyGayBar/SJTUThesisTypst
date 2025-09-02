@@ -80,7 +80,7 @@
     }],
 
     [#info-key("院系")], [#text(weight: "bold")[：]], [#info-value(info.school)],
-    [#info-key("学科/专业")], [#text(weight: "bold")[：]], [#info-value(info.major)],
+    [#info-key([学科/#h(0.1em)专业])], [#text(weight: "bold")[：]], [#info-value(info.major)],
     [#info-key("申请学位")], [#text(weight: "bold")[：]], [#info-value(info.degree)],
   )
 
