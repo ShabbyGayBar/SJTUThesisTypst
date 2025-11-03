@@ -1,7 +1,7 @@
 #import "../utils/style.typ": ziti
 #import "@preview/cuti:0.3.0": show-cn-fakebold
 #import "@preview/i-figured:0.2.4"
-#import "@preview/itemize:0.1.2" as el
+#import "@preview/itemize:0.2.0" as el
 
 // 文稿设置，可以进行一些像页面边距这类的全局设置
 #let doc(

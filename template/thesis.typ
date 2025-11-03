@@ -25,7 +25,7 @@
   achievement,
   summary-en,
 ) = documentclass(
-  doctype: "bachelor", // 文档类型: "master" | "doctor" | "bachelor"
+  doctype: "master", // 文档类型: "master" | "doctor" | "bachelor"
   date: datetime.today(), // 日期
   twoside: false, // 双面模式
   print: false, // 打印模式, 设置为 true 时，根据奇偶页调整页边距
@@ -477,7 +477,7 @@ Typst 使用 Hayagriva 管理参考文献，有部分细节问题还在逐步修
 我们可以在论文中插入算法，但是不建议插入大段的代码。如果确实需要插入代码，推荐使用 `codly` 包插入代码。
 
 #import "@preview/codly:1.3.0": *
-#import "@preview/codly-languages:0.1.8": *
+#import "@preview/codly-languages:0.1.10": *
 #show: codly-init.with()
 #codly(languages: codly-languages)
 
@@ -609,7 +609,7 @@ $
 
 `lilaq` 是一个强大的 Typst 绘图库，可以绘制各种类型的数据图。
 
-#import "@preview/lilaq:0.4.0" as lq
+#import "@preview/lilaq:0.5.0" as lq
 
 #let xs = (0, 1, 2, 3, 4)
 #let (y1, y2) = ((1, 2, 3, 4, 5), (5, 3, 7, 9, 3))
