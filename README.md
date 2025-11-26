@@ -33,9 +33,7 @@ Typst 提供了官方的 Web App，支持像 Overleaf 一样在线编辑。
 
 实际上，我们只需要在 [Web App](https://typst.app/?template=modern-sjtu-thesis&version=0.5.1) 中的 `Start from template` 里选择 `modern-sjtu-thesis`，即可在线创建模板并使用。
 
-**但是 Web App 并没有安装本地 Windows 或 MacOS 所拥有的字体，所以字体上可能存在差异，所以推荐本地编辑！**
-
-**你需要手动上传 fonts 目录下的字体文件到项目中，否则会导致字体显示错误！**
+你需要手动下载 [fonts.zip](https://github.com/tzhtaylor/modern-sjtu-thesis/releases/download/v0.5.1/fonts.zip) 然后手动上传 fonts 文件夹到项目中，否则会**导致字体显示错误**！
 
 ## Typst 快速入门
 
