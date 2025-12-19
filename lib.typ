@@ -26,24 +26,26 @@
   anonymous: false,
   print: false,
   info: (:),
+  key-to-zh: (:),
 ) = {
   date = date
   info = (
     (
-      student_id: "520XXXXXXXX",
+      student-id: "520XXXXXXXX",
       name: "张三",
-      name_en: "Zhang San",
+      name-en: "Zhang San",
       degree: "工学硕士",
       supervisor: "李四教授",
-      supervisor_en: "Prof. Li Si",
+      supervisor-en: "Prof. Li Si",
       title: "上海交通大学学位论文格式模板",
-      title_en: "DISSERTATION TEMPLATE FOR MASTER DEGREE OF ENGINEERING IN SHANGHAI JIAO TONG UNIVERSITY",
+      title-en: "DISSERTATION TEMPLATE FOR MASTER DEGREE OF ENGINEERING IN SHANGHAI JIAO TONG UNIVERSITY",
       school: "某某学院",
-      school_en: "School of XXXXXXX",
+      school-en: "School of XXXXXXX",
       major: "某某专业",
     )
       + info
   )
+  key-to-zh = key-to-zh
 
   (
     doctype: doctype,
@@ -52,6 +54,7 @@
     anonymous: anonymous,
     print: print,
     info: info,
+    key-to-zh: key-to-zh,
     doc: (..args) => {
       doc(
         ..args,
@@ -91,6 +94,7 @@
           anonymous: anonymous,
           info: info + args.named().at("info", default: (:)),
           date: date,
+          key-to-zh: key-to-zh,
         )
       } else {
         cover-page(
@@ -100,6 +104,7 @@
           anonymous: anonymous,
           info: info + args.named().at("info", default: (:)),
           date: date,
+          key-to-zh: key-to-zh,
         )
       }
     },
@@ -193,7 +198,7 @@
     summary-en: (..args) => {
       summary-en-page(
         ..args,
-        title: info.title_en,
+        title: info.title-en,
         doctype: doctype,
         twoside: twoside,
       )

@@ -189,13 +189,14 @@
   caption: "",
   caption-en: none,
   label-name: "",
+  alignx: center + bottom,
 ) = context {
   let prefix = "subimagex-none-label"
   let number = query(figure.where(kind: "subimage").before(here()))
   let label-name = if label-name == "" { str("~" + prefix + "-" + str(number.len())) } else { label-name }
   let new-label = label(label-name)
   align(
-    center + bottom,
+    alignx,
     figure(
       [
         #figure(
@@ -233,11 +234,11 @@
     #figure(
       [
         #figure(
-          grid(..body, columns: columns, row-gutter: 1em, column-gutter: 1em),
+          table(..body, columns: columns, row-gutter: 1em, column-gutter: 1em),
           caption: caption,
           kind: "image",
           supplement: [图],
-          gap: 1em,
+          gap: 0.5em,
         )#new-label
       ],
       gap: 1em,

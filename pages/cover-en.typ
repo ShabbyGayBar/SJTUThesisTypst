@@ -1,4 +1,4 @@
-#import "../utils/style.typ": ziti, zihao
+#import "../utils/style.typ": zihao, ziti
 #import "../utils/datetime-display.typ": datetime-en-display, datetime-en-display-without-day
 
 #let cover-en-page(
@@ -36,10 +36,10 @@
     text(
       size: zihao.xiaoer,
       weight: "bold",
-    )[#info.title_en],
+    )[#info.title-en],
   )
 
-  v(3.5cm)
+  v(2fr)
 
   let info-key-en(en) = (
     text(
@@ -69,22 +69,22 @@
     columns: (50%, 50%),
     row-gutter: 0.6em,
     [#info-key-en("Author:")],
-    [#if anonymous { } else {
-        info-value-en(info.name_en)
-      }],
+    [#if anonymous {} else {
+      info-value-en(info.name-en)
+    }],
 
     [#info-key-en("Supervisor:")],
-    [#if anonymous { } else {
-        info-value-en(info.supervisor_en)
-      }],
+    [#if anonymous {} else {
+      info-value-en(info.supervisor-en)
+    }],
   )
 
-  v(4cm)
+  v(2.5fr)
 
   align(
     center,
     text(size: zihao.sanhao)[
-      #info.school_en
+      #info.school-en
 
       Shanghai Jiao Tong University
 
@@ -97,6 +97,8 @@
       }
     ],
   )
+
+  v(0.5fr)
 
   pagebreak(
     weak: true,

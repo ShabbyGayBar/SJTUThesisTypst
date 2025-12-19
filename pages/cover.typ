@@ -8,6 +8,7 @@
   twoside: false,
   anonymous: false,
   info: (:),
+  key-to-zh: (:),
 ) = {
   align(
     center,
@@ -23,19 +24,46 @@
     "上海交通大学硕士学位论文"
   }
 
+  let customized = key-to-zh != (:)
+
+  let key-to-zh = if customized {
+    key-to-zh
+  } else {
+    (
+      name: "姓名",
+      student-id: "学号",
+      supervisor: "导师",
+      co-supervisor: "联合导师",
+      school: "院系",
+      major: [学科/#h(0.1em)专业],
+      degree: "申请学位",
+    )
+  }
+
+  if not customized and info.keys().contains("co-supervisor") {
+    key-to-zh.supervisor = "校内导师"
+    key-to-zh.school = "学院"
+  }
+
+  for key in key-to-zh.keys() {
+    if not info.keys().contains(key) {
+      let tmp = key-to-zh.remove(key)
+    }
+  }
+
   align(
     center,
     text(font: ziti.songti, size: zihao.xiaoer)[#cover-title],
   )
 
-  v(3.6cm)
+  v(1fr)
 
   align(
     center,
     text(font: ziti.songti, size: zihao.erhao, weight: "bold")[#info.title],
   )
 
-  v(1fr)
+  v(1.1fr)
 
   let info-key(zh) = distr(width: 5em, zh)
 
@@ -61,27 +89,12 @@
     inset: (right: 0em),
     column-gutter: (-0.3em, 1em),
     row-gutter: 0.7em,
-    [#info-key("姓名")],
-    [#text(weight: "bold")[：]],
-    [#if anonymous {} else {
-      info-value(info.name)
-    }],
 
-    [#info-key("学号")],
-    [#text(weight: "bold")[：]],
-    [#if anonymous {} else {
-      info-value(info.student_id)
-    }],
-
-    [#info-key("导师")],
-    [#text(weight: "bold")[：]],
-    [#if anonymous {} else {
-      info-value(info.supervisor)
-    }],
-
-    [#info-key("院系")], [#text(weight: "bold")[：]], [#info-value(info.school)],
-    [#info-key([学科/#h(0.1em)专业])], [#text(weight: "bold")[：]], [#info-value(info.major)],
-    [#info-key("申请学位")], [#text(weight: "bold")[：]], [#info-value(info.degree)],
+    ..for (key, value) in key-to-zh {
+      if key-to-zh.keys().contains(key) {
+        (info-key(value), text(weight: "bold")[：], info-value(info.at(key)))
+      }
+    },
   )
 
   linebreak()

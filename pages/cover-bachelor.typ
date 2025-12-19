@@ -7,6 +7,7 @@
   twoside: false,
   anonymous: false,
   info: (:),
+  key-to-zh: (:),
 ) = {
   v(0.3cm)
 
@@ -22,12 +23,39 @@
 
   let cover-title = "上海交通大学学位论文"
 
+  let customized = key-to-zh != (:)
+
+  let key-to-zh = if customized {
+    key-to-zh
+  } else {
+    (
+      name: "姓名",
+      student-id: "学号",
+      supervisor: "导师",
+      co-supervisor: "联合导师",
+      school: "学院",
+      major: "专业名称",
+      degree: "申请学位层次",
+    )
+  }
+
+  if not customized and info.keys().contains("co-supervisor") {
+    key-to-zh.supervisor = "校内导师"
+    key-to-zh.school = "学院"
+  }
+
+  for key in key-to-zh.keys() {
+    if not info.keys().contains(key) {
+      let tmp = key-to-zh.remove(key)
+    }
+  }
+
   align(
     center,
     text(font: ziti.songti, size: zihao.xiaoer)[#cover-title],
   )
 
-  v(1.86cm)
+  v(0.75fr)
 
   align(
     center,
@@ -36,7 +64,11 @@
 
   v(1fr)
 
-  let info-key(zh) = distr(width: 5em, zh)
+  let info-key(zh) = if zh.len() <= 12 {
+    distr(width: 4em, zh)
+  } else {
+    zh
+  }
 
   let info-value(zh) = (
     text(
@@ -56,38 +88,23 @@
         right
       }
     ),
-    columns: (37%, 1%, 62%),
+    columns: (36%, 1%, 1fr),
     inset: (right: 0em),
     column-gutter: (-0.3em, 1em),
     row-gutter: 0.81em,
-    [#info-key("姓名")],
-    [#text(weight: "bold")[：]],
-    [#if anonymous {} else {
-      info-value(info.name)
-    }],
 
-    [#info-key("学号")],
-    [#text(weight: "bold")[：]],
-    [#if anonymous {} else {
-      info-value(info.student_id)
-    }],
-
-    [#info-key("导师")],
-    [#text(weight: "bold")[：]],
-    [#if anonymous {} else {
-      info-value(info.supervisor)
-    }],
-
-    [#info-key("学院")], [#text(weight: "bold")[：]], [#info-value(info.school)],
-    [#info-key("专业名称")], [#text(weight: "bold")[：]], [#info-value(info.major)],
-    [申请学位层次], [#text(weight: "bold")[：]], [#info-value(info.degree)],
+    ..for (key, value) in key-to-zh {
+      if key-to-zh.keys().contains(key) {
+        (info-key(value), text(weight: "bold")[：], info-value(info.at(key)))
+      }
+    },
   )
 
-  v(2.8cm)
+  v(0.8fr)
 
   align(
     center,
-    text(font: ziti.songti, size: zihao.sihao, weight: "bold")[#datetime-display-without-day(date)],
+    text(font: ziti.songti, size: zihao.sihao)[#datetime-display-without-day(date)],
   )
 
   v(2.45cm)

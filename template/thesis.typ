@@ -31,16 +31,16 @@
   print: false, // 打印模式, 设置为 true 时，根据奇偶页调整页边距
   anonymous: false, // 盲审模式
   info: (
-    student_id: "520XXXXXXXX",
+    student-id: "520XXXXXXXX",
     name: "张三",
-    name_en: "Zhang San",
+    name-en: "Zhang San",
     degree: "工学硕士",
     supervisor: "李四教授",
-    supervisor_en: "Prof. Li Si",
+    supervisor-en: "Prof. Li Si",
     title: "上海交通大学学位论文格式模板",
-    title_en: "DISSERTATION TEMPLATE FOR MASTER DEGREE OF ENGINEERING IN SHANGHAI JIAO TONG UNIVERSITY",
+    title-en: "DISSERTATION TEMPLATE FOR MASTER DEGREE OF ENGINEERING IN SHANGHAI JIAO TONG UNIVERSITY",
     school: "某某学院",
-    school_en: "School of XXXXXXX",
+    school-en: "School of XXXXXXX",
     major: "某某专业",
   ),
 )
@@ -167,9 +167,12 @@
 公式应另起一行居中排版。公式后应注明编号，按章顺序编排，编号右端对齐，如@equation 所示。
 
 $
-  ee^(ii ppi) + 1 = 0, \
-  (dif^2 u) / (dif t^2) = integral f(x) dif x.
+  ee^(ii ppi) + 1 = 0
 $ <equation>
+
+$
+  (dif^2 u) / (dif t^2) = integral f(x) dif x
+$
 
 公式末尾是需要添加标点符号的，至于用逗号还是句号，取决于公式下面一句是接着公式说的，还是另起一句。
 
@@ -282,8 +285,7 @@ Typst 使用 Hayagriva 管理参考文献，有部分细节问题还在逐步修
   label-name: "SRR",
 )
 
-如果多个图形相互独立，并不共用一个图形计数器，那么用 `grid` 或者
-`columns` 就可以，如@img:parallel1 与@img:parallel2。
+如果多个图形相互独立，并不共用一个图形计数器，那么用 `grid` 或者 `columns` 就可以，如@img:parallel1 与@img:parallel2。
 
 #grid(
   align: bottom,
@@ -332,6 +334,7 @@ Typst 使用 Hayagriva 管理参考文献，有部分细节问题还在逐步修
     caption: [2050 年的温室气体排放量],
     // caption-en: [Greenhouse gas emissions in 2050],
     label-name: "test2",
+    alignx: center + horizon,
   ),
   columns: (1fr, 1fr),
   caption: [不同情景下上海市乘用车的温室气体排放量],
