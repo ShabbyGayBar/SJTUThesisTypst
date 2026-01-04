@@ -1,5 +1,5 @@
 #import "../utils/style.typ": ziti
-#import "@preview/cuti:0.3.0": show-cn-fakebold
+#import "@preview/cuti:0.4.0": show-cn-fakebold
 #import "@preview/i-figured:0.2.4"
 #import "@preview/itemize:0.2.0" as el
 

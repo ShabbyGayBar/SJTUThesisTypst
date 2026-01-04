@@ -1,9 +1,10 @@
 # 上海交通大学学位论文 modern-sjtu-thesis
 
-这是上海交通大学学位论文的 [Typst 模板](https://typst.app/universe/package/modern-sjtu-thesis)
-，它能够简洁、快速、持续生成 PDF 格式的毕业论文，现已支持本科、硕士和博士的毕业论文撰写，均参考官方提供的word模板进行开发。
+这是上海交通大学学位论文的 [Typst 模板](https://typst.app/universe/package/modern-sjtu-thesis)，它能够简洁、快速、持续生成 PDF 格式的毕业论文，现已支持本科、硕士和博士的毕业论文撰写，均参考官方提供的word模板进行开发。
 
 ## 使用
+
+如果在使用过程中遇到任何问题，欢迎在 [Issues](https://github.com/tzhtaylor/modern-sjtu-thesis/issues) 中反馈。
 
 ### VS Code 本地编辑（推荐）
 

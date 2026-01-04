@@ -7,6 +7,7 @@
   doctype: "master",
   twoside: false,
   bibfunc: none,
+  style: "shanghai-jiao-tong-university.csl",
   full: false,
 ) = {
   pagebreak(
@@ -27,6 +28,7 @@
 
   bilingual-bibliography(
     bibliography: bibfunc,
+    style: style,
     title: if doctype == "bachelor" { [参#h(0.5em)考#h(0.5em)文#h(0.5em)献] } else { [参考文献] },
     full: full,
   )

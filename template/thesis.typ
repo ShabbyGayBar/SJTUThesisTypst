@@ -37,6 +37,7 @@
     degree: "工学硕士",
     supervisor: "李四教授",
     supervisor-en: "Prof. Li Si",
+    // co-supervisor: "王五研究员", // 行业导师，添加该字段将会转换为工程硕士专用封面
     title: "上海交通大学学位论文格式模板",
     title-en: "DISSERTATION TEMPLATE FOR MASTER DEGREE OF ENGINEERING IN SHANGHAI JIAO TONG UNIVERSITY",
     school: "某某学院",
@@ -97,7 +98,7 @@
   / $mu$: 磁导率
   / $epsilon$: 介电常数
   / $mu$: 磁导率
-]
+] // nomenclature 为单独一页的符号对照表，在附录中可使用 nomenclature-table
 
 #show: mainmatter
 // #show: mainmatter.with(enable-avoid-orphan-headings: true) // 避免孤行标题，此为实验性功能，会对页面顶部距离造成影响

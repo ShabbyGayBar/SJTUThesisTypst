@@ -40,7 +40,8 @@
     )
   }
 
-  if not customized and info.keys().contains("co-supervisor") {
+  if not customized and doctype == "master" and info.keys().contains("co-supervisor") {
+    cover-title = "上海交通大学专业学位硕士学位论文"
     key-to-zh.supervisor = "校内导师"
     key-to-zh.school = "学院"
   }

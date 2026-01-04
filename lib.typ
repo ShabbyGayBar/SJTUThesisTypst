@@ -12,7 +12,7 @@
 #import "pages/abstract.typ": abstract-page
 #import "pages/abstract-en.typ": abstract-en-page
 #import "pages/outline.typ": algorithm-outline-page, image-outline-page, outline-page, table-outline-page
-#import "pages/nomenclature.typ": nomenclature-page
+#import "pages/nomenclature.typ": nomenclature-page, nomenclature-table
 #import "pages/bib.typ": bibliography-page
 #import "pages/acknowledgement.typ": acknowledgement-page
 #import "pages/achievement.typ": achievement-page
