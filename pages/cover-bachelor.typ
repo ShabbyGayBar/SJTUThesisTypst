@@ -39,9 +39,17 @@
     )
   }
 
+  if anonymous {
+    info.name = ""
+    info.student-id = ""
+    info.supervisor = ""
+    if info.keys().contains("co-supervisor") {
+      info.co-supervisor = ""
+    }
+  }
+
   if not customized and info.keys().contains("co-supervisor") {
     key-to-zh.supervisor = "校内导师"
-    key-to-zh.school = "学院"
   }
 
   for key in key-to-zh.keys() {
