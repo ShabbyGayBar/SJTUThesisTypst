@@ -77,7 +77,6 @@
                   context if nxt.get() {
                     set align(left)
                     text(weight: "bold")[续#ref(head-label)]
-                    nxt.update(false)
                   } else {
                     v(-1em)
                     nxt.update(true)
@@ -146,7 +145,6 @@
               set align(left)
               set text(weight: "bold")
               [续#ref(head-label)]
-              nxt.update(false)
             } else {
               set align(left)
               set text(weight: "bold")
